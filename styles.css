@@ -632,6 +632,9 @@ a.contact__row:hover { transform: translateX(5px); border-color: var(--gold); ba
 
 /* ----- Menú móvil ----- */
 @media (max-width: 899px) {
+  /* En móvil/tablet la imagen del clóset va PRIMERO (lo primero que se ve) */
+  .hero__visual { order: -1; }
+  .hero__content { order: 1; }
   .nav-toggle { display: flex; }
   .nav {
     position: fixed; inset: 0 0 0 auto; width: min(86vw, 360px); height: 100vh; height: 100dvh;
