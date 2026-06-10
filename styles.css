@@ -210,31 +210,20 @@ ul { list-style: none; }
    ============================================================ */
 #preloader {
   position: fixed; inset: 0; z-index: 9999;
-  background: radial-gradient(120% 120% at 50% 40%, #FBF7EE 0%, #EFE6D6 60%);
+  background: radial-gradient(120% 120% at 50% 38%, #18120A 0%, #0B0805 62%);
   display: grid; place-items: center;
   transition: opacity 0.8s var(--ease), visibility 0.8s;
 }
 #preloader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 #preloader-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.preloader__inner { position: relative; z-index: 2; text-align: center; width: min(86vw, 360px); }
-.monogram-svg { width: 200px; max-width: 60vw; margin: 0 auto; overflow: visible; }
-.monogram-text {
-  font-family: var(--font-display); font-weight: 700; font-size: 80px; font-style: italic;
-  text-anchor: middle; fill: transparent;
-  stroke: var(--gold-deep); stroke-width: 1px;
-  stroke-dasharray: 360; stroke-dashoffset: 360;
-  animation: drawMono 1.6s var(--ease) forwards, fillMono 0.7s ease 1.4s forwards;
-}
-@keyframes drawMono { to { stroke-dashoffset: 0; } }
-@keyframes fillMono { to { fill: var(--gold-deep); } }
-.preloader__brand {
-  margin-top: 0.6rem; font-family: var(--font-body); font-weight: 500;
-  letter-spacing: 0.42em; font-size: 0.74rem; color: var(--text-soft);
-  text-indent: 0.42em; opacity: 0; animation: fadeUp 0.8s ease 0.9s forwards;
-}
-.preloader__bar { margin: 1.7rem auto 0; width: 100%; height: 2px; background: rgba(58, 44, 16, 0.15); border-radius: 2px; overflow: hidden; }
-.preloader__fill { display: block; height: 100%; width: 0; background: var(--grad-gold); box-shadow: 0 0 14px rgba(193, 154, 46, 0.6); }
-.preloader__pct { margin-top: 0.8rem; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--gold-deep); font-variant-numeric: tabular-nums; }
+.preloader__inner { position: relative; z-index: 2; text-align: center; width: min(86vw, 380px); }
+/* Logo real flotando sobre el fondo oscuro del preloader */
+.preloader__logo { width: min(80vw, 340px); margin: 0 auto; opacity: 0; transform: scale(0.92); animation: logoIn 1s var(--ease) 0.2s forwards; filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.5)); }
+.preloader__logo img { display: block; width: 100%; height: auto; }
+@keyframes logoIn { to { opacity: 1; transform: scale(1); } }
+.preloader__bar { margin: 2rem auto 0; width: 100%; height: 2px; background: rgba(255, 255, 255, 0.12); border-radius: 2px; overflow: hidden; }
+.preloader__fill { display: block; height: 100%; width: 0; background: var(--grad-gold); box-shadow: 0 0 14px rgba(193, 154, 46, 0.7); }
+.preloader__pct { margin-top: 0.8rem; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--gold-bright); font-variant-numeric: tabular-nums; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 /* ---------- SCROLL PROGRESS ---------- */
@@ -555,6 +544,10 @@ a.contact__row:hover { transform: translateX(5px); border-color: var(--gold); ba
 .footer { background: var(--black-2); border-top: 1px solid var(--line); padding-top: clamp(3.5rem, 8vw, 5.5rem); }
 .footer__grid { display: grid; grid-template-columns: 1fr; gap: 2.6rem; padding-bottom: 3rem; }
 .brand--footer { margin-bottom: 1.2rem; }
+/* Placa oscura con el logo real en el footer claro */
+.footer__logo { display: inline-block; background: #15110A; border: 1px solid var(--gold-border); border-radius: var(--r); padding: 1.2rem 1.4rem; box-shadow: var(--shadow-card); margin-bottom: 1.3rem; transition: transform var(--t) var(--ease), border-color var(--t); }
+.footer__logo:hover { transform: translateY(-3px); border-color: var(--gold); }
+.footer__logo img { display: block; width: 100%; max-width: 210px; height: auto; }
 .footer__tagline { color: var(--text-soft); font-size: 0.94rem; max-width: 42ch; }
 .footer__social { display: flex; gap: 0.7rem; margin-top: 1.4rem; }
 .footer__social a { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line-2); transition: border-color var(--t), background var(--t), transform var(--t); }
