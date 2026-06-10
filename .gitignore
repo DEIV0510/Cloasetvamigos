@@ -1,0 +1,14 @@
+# Dependencias
+node_modules/
+
+# Logs y temporales
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Capturas de verificación
+.playwright-mcp/
