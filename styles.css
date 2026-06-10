@@ -647,6 +647,42 @@ a.contact__row:hover { transform: translateX(5px); border-color: var(--gold); ba
   .hero__actions .btn { width: 100%; }
 }
 
+/* ----- Celular: listas de tarjetas como carrusel horizontal + galería de a 2 ----- */
+@media (max-width: 600px) {
+  .benefits__grid,
+  .services__grid,
+  .testimonials__grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px 2px 1.4rem;
+    scroll-padding-left: var(--pad);
+  }
+  .benefits__grid > *,
+  .services__grid > *,
+  .testimonials__grid > * {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+  /* En el carrusel las tarjetas se muestran sin esperar el scroll-reveal */
+  .benefits__grid > .reveal,
+  .services__grid > .reveal,
+  .testimonials__grid > .reveal { opacity: 1; transform: none; }
+  /* Barra de desplazamiento sutil dorada */
+  .benefits__grid::-webkit-scrollbar,
+  .services__grid::-webkit-scrollbar,
+  .testimonials__grid::-webkit-scrollbar { height: 4px; }
+  .benefits__grid::-webkit-scrollbar-thumb,
+  .services__grid::-webkit-scrollbar-thumb,
+  .testimonials__grid::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 4px; }
+
+  /* Galería: 2 imágenes por fila */
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+}
+
 /* Animaciones costosas off para reduced-motion / móvil */
 @media (prefers-reduced-motion: reduce) {
   .marquee__track, .wa-float__pulse, .hero__badge--1, .hero__badge--2, .hero__scroll-mouse::after { animation: none !important; }
