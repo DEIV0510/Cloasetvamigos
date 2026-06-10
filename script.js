@@ -162,6 +162,7 @@
     const nums = $$('.stat__num');
     if (!nums.length) return;
     const run = (el) => {
+      if (el.dataset.count == null) return; // valores estáticos (ej. "Gratis") no se animan
       const target = parseInt(el.dataset.count, 10) || 0;
       const suffix = el.dataset.suffix || '';
       if (reduceMotion) { el.textContent = target + suffix; return; }
@@ -185,6 +186,7 @@
      ============================================================ */
   const PROJECTS = [
     { src: 'closet1', cat: 'closets', title: 'Clóset en madera nogal', alt: 'Clóset a medida en madera nogal con acabado natural y herrajes metálicos' },
+    { src: 'cocina4', cat: 'cocinas', title: 'Cocina integral con isla', alt: 'Cocina integral moderna con isla, muebles en negro y blanco con mesón oscuro' },
     { src: 'cocina3', cat: 'cocinas', title: 'Cocina moderna grafito', alt: 'Cocina integral moderna en L color grafito con electrodomésticos empotrados' },
     { src: 'bano1', cat: 'banos', title: 'Mueble de baño en madera', alt: 'Mueble de baño flotante en madera con lavamanos vessel blanco' },
     { src: 'closet2', cat: 'closets', title: 'Clóset gris a medida', alt: 'Clóset gris de seis puertas con cajonera central fabricado a medida' },
