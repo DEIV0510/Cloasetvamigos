@@ -1,6 +1,12 @@
 # Dependencias
 node_modules/
 
+# Tooling de build LOCAL (solo para reprocesar imágenes con sharp).
+# Se excluyen del repo para que Vercel lo trate como sitio 100% estático
+# y no intente ejecutar un build. Siguen existiendo en tu disco local.
+package.json
+package-lock.json
+
 # Logs y temporales
 *.log
 npm-debug.log*
