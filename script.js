@@ -81,8 +81,6 @@
         document.body.classList.remove('no-scroll');
         running = false;
         if (raf) cancelAnimationFrame(raf);
-        // activa cursor personalizado tras cargar
-        if (finePointer) document.body.classList.add('cursor-ready');
       }, reduceMotion ? 100 : 300);
     }
     document.body.classList.add('no-scroll');
@@ -90,36 +88,7 @@
     setTimeout(finish, 4000);
   }
 
-  /* ============================================================
-     2. CURSOR PERSONALIZADO (escritorio)
-     ============================================================ */
-  function initCursor() {
-    if (!finePointer || reduceMotion) return;
-    const dot = $('.cursor-dot'), ring = $('.cursor-ring');
-    if (!dot || !ring) return;
-    let mx = 0, my = 0, rx = 0, ry = 0, active = false;
-
-    window.addEventListener('mousemove', (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
-      if (!active) { active = true; dot.classList.add('is-active'); ring.classList.add('is-active'); }
-    }, { passive: true });
-
-    const loop = () => {
-      rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
-      requestAnimationFrame(loop);
-    };
-    loop();
-
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest('a, button, summary, .gallery__item, input, select, textarea, label')) ring.classList.add('is-hover');
-    });
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest('a, button, summary, .gallery__item, input, select, textarea, label')) ring.classList.remove('is-hover');
-    });
-    document.addEventListener('mouseleave', () => { dot.classList.remove('is-active'); ring.classList.remove('is-active'); active = false; });
-  }
+  /* Cursor personalizado eliminado: se usa el cursor nativo del sistema. */
 
   /* ============================================================
      3. HEADER + SCROLL PROGRESS + SCROLLSPY
@@ -416,7 +385,6 @@
      ============================================================ */
   document.addEventListener('DOMContentLoaded', () => {
     initPreloader();
-    initCursor();
     initScrollUI();
     initMenu();
     initReveal();
