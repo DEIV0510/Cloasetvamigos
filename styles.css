@@ -52,6 +52,14 @@
   --container: 1240px;
   --pad: clamp(1.15rem, 4vw, 2.5rem);
   --nav-h: 76px;
+
+  /* Sección clara "showroom" */
+  --ivory: #F5F0E6;
+  --ivory-2: #ECE4D4;
+  --ink: #1C1810;
+  --ink-soft: #6B6149;
+  --shadow-light: 0 30px 60px -28px rgba(60, 45, 15, 0.38);
+  --grad-gold-metal: linear-gradient(135deg, #8A6D1F 0%, #D4AF37 24%, #F8EFC8 50%, #D4AF37 74%, #A8842A 100%);
 }
 
 /* ---------- RESET ---------- */
@@ -64,7 +72,10 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: var(--font-body);
-  background: var(--black);
+  background:
+    radial-gradient(125% 80% at 50% -8%, #17110A 0%, transparent 46%),
+    radial-gradient(90% 55% at 100% 2%, rgba(168, 132, 42, 0.07), transparent 55%),
+    var(--black);
   color: var(--text);
   line-height: 1.7;
   font-size: 1rem;
@@ -74,6 +85,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 body.no-scroll { overflow: hidden; }
+
+/* Textura de grano global para dar profundidad táctil premium */
+.grain-overlay {
+  position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
 
 img, svg, iframe { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -89,7 +107,7 @@ ul { list-style: none; }
 
 /* ---------- LAYOUT BASE ---------- */
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--pad); }
-.section { padding-block: clamp(4.5rem, 10vw, 8.5rem); position: relative; }
+.section { padding-block: clamp(4.5rem, 10vw, 8.5rem); position: relative; overflow: hidden; }
 
 /* ---------- TIPOGRAFÍA / HELPERS ---------- */
 .eyebrow {
@@ -115,16 +133,33 @@ ul { list-style: none; }
   font-size: clamp(1rem, 1.4vw, 1.1rem);
   max-width: 56ch;
 }
-.section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(2.8rem, 6vw, 4.5rem); }
+.section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(2.8rem, 6vw, 4.5rem); position: relative; }
 .section-head .section-sub { margin-inline: auto; }
 .section-head--left { text-align: left; }
 .section-head--left .section-sub, .section-head--left { margin-inline: 0; }
+.section-head > * { position: relative; z-index: 1; }
+
+/* Tipografía gigante "fantasma" detrás de los títulos (look editorial) */
+.section-ghost {
+  position: absolute; left: 50%; top: 50%; z-index: 0;
+  transform: translate(-50%, -64%);
+  font-family: var(--font-display); font-style: italic; font-weight: 700;
+  font-size: clamp(4.5rem, 17vw, 12rem); line-height: 1; letter-spacing: -0.02em;
+  white-space: nowrap; color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 175, 55, 0.11);
+  pointer-events: none; user-select: none;
+}
+.section-head--left .section-ghost { left: 0; transform: translate(-3%, -62%); }
 
 .text-gold-italic {
   font-family: var(--font-display); font-style: italic; font-weight: 500;
-  background: var(--grad-gold); -webkit-background-clip: text; background-clip: text;
+  background: var(--grad-gold-metal); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: var(--gold);
 }
+/* Brillo metálico animado solo en el título del hero */
+.hero__title .text-gold-italic { background-size: 230% 100%; animation: goldSheen 7s ease-in-out infinite; }
+@keyframes goldSheen { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
 
 /* ---------- BOTONES ---------- */
 .btn {
@@ -317,14 +352,16 @@ ul { list-style: none; }
    BENEFICIOS
    ============================================================ */
 .benefits { background: linear-gradient(180deg, var(--black) 0%, var(--black-2) 100%); }
-.benefits__grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+.benefits__grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; counter-reset: benefit; }
 .benefit-card {
-  position: relative; padding: 2.2rem 1.9rem; border-radius: var(--r);
+  position: relative; padding: 2.2rem 1.9rem; border-radius: var(--r); counter-increment: benefit;
   background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
   border: 1px solid var(--line); overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 40px -30px rgba(0, 0, 0, 0.9);
   transition: transform var(--t) var(--ease), border-color var(--t), box-shadow var(--t);
 }
 .benefit-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--grad-gold); transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease); }
+.benefit-card::after { content: "0" counter(benefit); position: absolute; top: 1.3rem; right: 1.6rem; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 2.6rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(212, 175, 55, 0.20); pointer-events: none; }
 .benefit-card:hover { transform: translateY(-6px); border-color: var(--gold-border); box-shadow: var(--shadow-card); }
 .benefit-card:hover::before { transform: scaleX(1); }
 .benefit-card__ic { display: grid; place-items: center; width: 58px; height: 58px; border-radius: var(--r-sm); background: var(--gold-soft); border: 1px solid var(--gold-border); margin-bottom: 1.4rem; transition: background var(--t); }
@@ -359,6 +396,31 @@ ul { list-style: none; }
 .service-card:hover .service-card__ic { transform: translateY(-3px) rotate(-4deg); }
 .service-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.22rem; color: var(--white); margin-bottom: 0.5rem; line-height: 1.2; }
 .service-card p { color: var(--text-soft); font-size: 0.9rem; }
+
+/* ---- Variante CLARA "showroom" (rompe el muro oscuro, contraste premium) ---- */
+.services--light { background: linear-gradient(180deg, var(--ivory) 0%, var(--ivory-2) 100%); }
+.services--light::before, .services--light::after { content: ""; position: absolute; width: 60px; height: 60px; pointer-events: none; }
+.services--light::before { top: 34px; left: 34px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); opacity: 0.5; }
+.services--light::after { bottom: 34px; right: 34px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); opacity: 0.5; }
+.services--light .section-title { color: var(--ink); }
+.services--light .section-sub { color: var(--ink-soft); }
+.services--light .eyebrow { color: var(--gold-deep); }
+.services--light .eyebrow__line { background: linear-gradient(90deg, transparent, var(--gold-deep)); }
+.services--light .section-ghost { -webkit-text-stroke-color: rgba(120, 90, 25, 0.13); }
+.services--light .text-gold-italic { background: linear-gradient(135deg, #9A7A22, #C79A2C 50%, #8A6D1F); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.services--light .service-card { background: #FFFFFF; border-color: rgba(60, 45, 15, 0.10); box-shadow: var(--shadow-light); }
+.services--light .service-card::after { background: radial-gradient(circle, rgba(184, 146, 46, 0.14), transparent 70%); }
+.services--light .service-card:hover { background: #FFFDF7; border-color: var(--gold); box-shadow: 0 38px 66px -26px rgba(60, 45, 15, 0.5); }
+.services--light .service-card__ic { background: var(--ivory); border-color: rgba(184, 146, 46, 0.45); }
+.services--light .service-card__ic svg { stroke: var(--gold-deep); }
+.services--light .service-card h3 { color: var(--ink); }
+.services--light .service-card p { color: var(--ink-soft); }
+
+/* ---- Glows dorados cálidos por sección (profundidad y calidez) ---- */
+.process::before { content: ""; position: absolute; top: 10%; left: -8%; width: 480px; height: 480px; max-width: 60vw; background: radial-gradient(circle, rgba(212, 175, 55, 0.10), transparent 65%); pointer-events: none; }
+.testimonials::before { content: ""; position: absolute; top: -6%; right: -6%; width: 520px; height: 520px; max-width: 65vw; background: radial-gradient(circle, rgba(168, 132, 42, 0.12), transparent 65%); pointer-events: none; }
+.coverage::before { content: ""; position: absolute; bottom: -10%; left: 30%; width: 500px; height: 500px; max-width: 70vw; background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent 65%); pointer-events: none; }
+.faq::before { content: ""; position: absolute; top: 20%; right: -10%; width: 460px; height: 460px; max-width: 60vw; background: radial-gradient(circle, rgba(168, 132, 42, 0.09), transparent 65%); pointer-events: none; }
 
 /* ============================================================
    GALERÍA
