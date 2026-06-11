@@ -26,6 +26,14 @@ const MAP = [
   ['puertas1.png', 'puertas1'],
   ['puertas2.png', 'puertas2'],
   ['puertas3.png', 'puertas3'],
+  // Fotos nuevas (mejor calidad) — agregadas 2026-06-10
+  ['nuevacocina.png', 'ncocina1'],
+  ['nuevacocina2.png', 'ncocina2'],
+  ['nuevacocina3.png', 'ncocina3'],
+  ['nuevocloset.png', 'ncloset1'],
+  ['nuevocloset2.png', 'ncloset2'],
+  ['nuevocloset3.png', 'ncloset3'],
+  ['nuevocloset4.png', 'ncloset4'],
 ];
 
 // Realce premium consistente para fotos de celular apagadas (sin distorsión).
