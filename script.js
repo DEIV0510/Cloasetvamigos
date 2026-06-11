@@ -194,7 +194,7 @@
     { src: 'ncloset2', cat: 'closets', title: 'Clóset gris a medida', alt: 'Clóset gris de tres puertas con sección superior y marco blanco' },
     { src: 'ncocina3', cat: 'cocinas', title: 'Cocina lineal en madera', alt: 'Cocina integral lineal en madera clara con estufa, lavaplatos y mesón' },
     { src: 'closet2', cat: 'closets', title: 'Clóset gris de seis puertas', alt: 'Clóset gris de seis puertas con cajonera central fabricado a medida' },
-    { src: 'cocina2', cat: 'cocinas', title: 'Cocina integral en L', alt: 'Cocina integral en L con mesón oscuro y muebles en madera clara' },
+    { src: 'ncocina4', cat: 'cocinas', title: 'Cocina integral en L', alt: 'Cocina integral en L moderna en tono gris con mesón gris y nevera de acero empotrada' },
     { src: 'ncloset3', cat: 'closets', title: 'Clóset gris con cajones', alt: 'Clóset gris a medida con cajonera inferior y mueble lateral' },
     { src: 'puertas1', cat: 'puertas', title: 'Puerta corrediza', alt: 'Puerta corrediza blanca de panel fabricada a medida' },
     { src: 'ncocina2', cat: 'cocinas', title: 'Cocina en madera con isla', alt: 'Cocina integral en madera con isla central y mesón oscuro' },

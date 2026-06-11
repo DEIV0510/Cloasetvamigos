@@ -30,6 +30,7 @@ const MAP = [
   ['nuevacocina.png', 'ncocina1'],
   ['nuevacocina2.png', 'ncocina2'],
   ['nuevacocina3.png', 'ncocina3'],
+  ['nuevacocina4.png', 'ncocina4'],
   ['nuevocloset.png', 'ncloset1'],
   ['nuevocloset2.png', 'ncloset2'],
   ['nuevocloset3.png', 'ncloset3'],
