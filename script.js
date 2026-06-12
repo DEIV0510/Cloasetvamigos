@@ -189,7 +189,6 @@
     { src: 'closet1', cat: 'closets', title: 'Clóset en madera nogal', alt: 'Clóset a medida en madera nogal con acabado natural y herrajes metálicos' },
     { src: 'cocina4', cat: 'cocinas', title: 'Cocina integral con isla', alt: 'Cocina integral moderna con isla, muebles en negro y blanco con mesón oscuro' },
     { src: 'ncloset4', cat: 'closets', title: 'Vestier esquinero con espejo', alt: 'Clóset esquinero blanco a medida con puerta de espejo de cuerpo entero' },
-    { src: 'bano1', cat: 'banos', title: 'Mueble de baño en madera', alt: 'Mueble de baño flotante en madera con lavamanos vessel blanco' },
     { src: 'cocina3', cat: 'cocinas', title: 'Cocina moderna grafito', alt: 'Cocina integral moderna en L color grafito con electrodomésticos empotrados' },
     { src: 'ncloset2', cat: 'closets', title: 'Clóset gris a medida', alt: 'Clóset gris de tres puertas con sección superior y marco blanco' },
     { src: 'ncocina3', cat: 'cocinas', title: 'Cocina lineal en madera', alt: 'Cocina integral lineal en madera clara con estufa, lavaplatos y mesón' },
@@ -199,7 +198,6 @@
     { src: 'puertas1', cat: 'puertas', title: 'Puerta corrediza', alt: 'Puerta corrediza blanca de panel fabricada a medida' },
     { src: 'ncocina2', cat: 'cocinas', title: 'Cocina en madera con isla', alt: 'Cocina integral en madera con isla central y mesón oscuro' },
     { src: 'ncloset1', cat: 'closets', title: 'Clóset bajo escalera', alt: 'Clóset a medida que aprovecha el espacio bajo la escalera' },
-    { src: 'bano3', cat: 'banos', title: 'Mueble de baño grafito', alt: 'Mueble de baño flotante en tono grafito con lavamanos integrado' },
     { src: 'puertas3', cat: 'puertas', title: 'Puerta en madera', alt: 'Puerta enchapada en madera con marco a medida' }
   ];
   const CAT_LABEL = { closets: 'Clóset', cocinas: 'Cocina', banos: 'Baño', puertas: 'Puerta' };
