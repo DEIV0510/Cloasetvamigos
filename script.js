@@ -369,7 +369,7 @@
       const mensaje = $('#mensaje').value.trim();
       let text = `Hola, soy ${nombre.value.trim()}. Estoy interesado(a) en: ${tipo}.`;
       if (mensaje) text += ` ${mensaje}`;
-      text += ` Mi WhatsApp es ${telefono.value.trim()}. Quisiera agendar una visita sin compromiso.`;
+      text += ` Mi WhatsApp es ${telefono.value.trim()}. Quisiera agendar una visita.`;
       window.open(`${WA}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
     });
     // limpia error al escribir
