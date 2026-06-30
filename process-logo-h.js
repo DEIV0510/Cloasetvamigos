@@ -5,7 +5,7 @@
 const sharp = require('sharp');
 const path = require('path');
 
-const SRC = 'C:\\Users\\Lenovo\\Desktop\\closet\\logohorizontal.png';
+const SRC = path.join(__dirname, 'assets', 'raw', 'logo-horizontal-mejorado.png');
 const OUT = path.join(__dirname, 'assets', 'img');
 
 (async () => {
