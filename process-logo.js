@@ -3,7 +3,7 @@
 const sharp = require('sharp');
 const path = require('path');
 
-const SRC = 'C:\\Users\\Lenovo\\Desktop\\closet\\logo.png';
+const SRC = path.join(__dirname, 'assets', 'raw', 'logo-mejorado.png');
 const OUT = path.join(__dirname, 'assets', 'img');
 
 (async () => {
@@ -30,8 +30,8 @@ const OUT = path.join(__dirname, 'assets', 'img');
   // Se recorta del archivo ORIGINAL y se le aplica la transparencia al recorte.
   const W = info.width, H = info.height;
   const MARK = {
-    left: Math.round(W * 0.19), top: Math.round(H * 0.10),
-    width: Math.round(W * 0.62), height: Math.round(H * 0.48)
+    left: Math.round(W * 0.33), top: Math.round(H * 0.05),
+    width: Math.round(W * 0.34), height: Math.round(H * 0.56)
   };
   const crop = await sharp(SRC).extract(MARK).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   const cd = crop.data, cch = crop.info.channels;

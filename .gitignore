@@ -18,3 +18,6 @@ desktop.ini
 
 # Capturas de verificación
 .playwright-mcp/
+
+# Materiales fuente del cliente (fotos/logos originales, no se publican)
+_material-closet/
