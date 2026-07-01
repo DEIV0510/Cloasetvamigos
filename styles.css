@@ -237,7 +237,7 @@ ul { list-style: none; }
 .header__inner { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 
 .brand { display: inline-flex; align-items: center; gap: 0.7rem; }
-.brand__img { display: block; height: clamp(40px, 5.5vw, 50px); width: auto; filter: drop-shadow(0 2px 5px rgba(60, 44, 14, 0.22)); }
+.brand__img { display: block; height: clamp(46px, 6.3vw, 60px); width: auto; filter: drop-shadow(0 2px 5px rgba(60, 44, 14, 0.22)); }
 .brand__name { font-family: var(--font-display); font-size: 1.18rem; font-weight: 500; color: var(--ink); line-height: 1.1; }
 .brand__name em { font-style: italic; color: var(--gold-deep); }
 
